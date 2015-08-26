@@ -13,6 +13,13 @@
     #tb{
       background-color: #009688;
     }
+    #editid,#saveid{
+      margin-left: 68%;
+      background-color: rgb(0, 150, 136);
+    }
+    #loc{
+        width: 78%;
+    }
     </style>
     <title>Settings Page</title>
   </head>
@@ -36,20 +43,14 @@
 
       <div flex="60">
           <h3>Edit Your Profile</h3>
-            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-              
-              <button class="md-raised md-primary" ng-click="alert();">Edit</button>
-             
-            </section>
-
-
+            <md-button onClick="showfields()" id="editid" class="md-raised md-primary">Edit...</md-button>
           <md-input-container>
               <label>Your Name</label>
               <input id="name" required name="clientName" ng-model="username" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
-          </md-input-container>
+          </md-input-container> 
 
           <md-input-container>
               <label>Email</label>
@@ -59,13 +60,15 @@
               </div>
           </md-input-container>
 
-
-          <md-input-container>
-              <label>Location</label>
-              <input id="loc" required name="clientName" ng-model="loc" disabled="disabled">
-              <div ng-messages="projectForm.clientName.$error">
-                  <div ng-message="required"></div>
-              </div>
+        <md-input-container >
+              <select disabled="disabled" id="loc" name="Location">
+                  <option>Location</option>
+                  <option>Cameroon</option>
+                  <option>Nigeria</option>
+                  <option>Ghana</option>
+                  <option>USA</option>
+                  <!-- Location -->
+              </select>
           </md-input-container>
 
 
@@ -93,6 +96,8 @@
                   <div ng-message="required"></div>
               </div>
           </md-input-container>
+
+          <md-button disabled="disabled"  onClick="savechanges()" id="saveid" class="md-raised md-primary">Save Changes </md-button>
 
       </div>
 
@@ -123,8 +128,27 @@
     $scope.phone = "xxxxxxxx";
     $scope.other = "Others";
     };
+
+    
+
 }]);
 
+    function showfields(){
+      var x = document.getElementById('name');
+      var y = document.getElementById('loc');
+      var e = document.getElementById('email');
+      var l = document.getElementById('lan');
+      var p = document.getElementById('phone');
+      var o = document.getElementById('others');
+      var s = document.getElementById('saveid');
+      x.disabled = false;
+      y.disabled = false;
+      e.disabled = false;
+      l.disabled = false;
+      p.disabled = false;
+      o.disabled = false;
+      s.disabled = false;
+    }
 
     </script>
   </body>
