@@ -20,11 +20,16 @@
     #loc{
         width: 78%;
     }
+
+    input{
+        border-color: rgb(0, 150, 136);
+    }
+
     </style>
     <title>Settings Page</title>
   </head>
   
-<body layout="column" >
+<body layout="column"  >
     <md-toolbar id="tb" layout="row">
       <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
@@ -36,7 +41,7 @@
       </div><br>
     </md-toolbar>
 
-<div layout="row"   ng-controller="AppCtrl">
+<div layout="row"   >
       <div flex="20" style="">
         <p>Ads</p>
       </div>
@@ -46,7 +51,7 @@
             <md-button onClick="showfields()" id="editid" class="md-raised md-primary">Edit...</md-button>
           <md-input-container>
               <label>Your Name</label>
-              <input id="name" required name="clientName" ng-model="username" disabled="disabled">
+              <input id="name" required placeholder="Duplex" name="clientName" ng-model="username" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
