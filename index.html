@@ -17,7 +17,7 @@
     <title>Settings Page</title>
   </head>
   
-<body layout="column" ng-controller="AppCtrl">
+<body layout="column" >
     <md-toolbar id="tb" layout="row">
       <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
@@ -29,15 +29,23 @@
       </div><br>
     </md-toolbar>
 
-<div layout="row">
-      <div flex="20" style="background-color:#009688;height:100%">
+<div layout="row"   ng-controller="AppCtrl">
+      <div flex="20" style="">
         <p>Ads</p>
       </div>
 
       <div flex="60">
+          <h3>Edit Your Profile</h3>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+              
+              <button class="md-raised md-primary" ng-click="alert();">Edit</button>
+             
+            </section>
+
+
           <md-input-container>
               <label>Your Name</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="username" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -45,7 +53,7 @@
 
           <md-input-container>
               <label>Email</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="email" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -54,7 +62,7 @@
 
           <md-input-container>
               <label>Location</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="loc" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -63,7 +71,7 @@
 
           <md-input-container>
               <label>Language</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="lan" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -72,7 +80,7 @@
 
           <md-input-container>
               <label>Phone</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="phone" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -80,7 +88,7 @@
 
           <md-input-container>
               <label>Others</label>
-              <input required name="clientName" ng-model="project.clientName">
+              <input required name="clientName" ng-model="others" disabled="disabled">
               <div ng-messages="projectForm.clientName.$error">
                   <div ng-message="required"></div>
               </div>
@@ -88,7 +96,7 @@
 
       </div>
 
-      <div flex="20" style="background-color:#009688;;height:100%">
+      <div flex="20" style="">
         
       </div>
 </div>
@@ -105,97 +113,19 @@
     app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
       $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
-  };
- 
+    $scope.openfields = function(){
+      alert();
+    }
+    $scope.username = "Admin";
+    $scope.email = "admin@socialmart.info";
+    $scope.loc   = "Cameroon";
+    $scope.lan = "English";
+    $scope.phone = "xxxxxxxx";
+    $scope.other = "Others";
+    };
 }]);
-
-  /*Login controller functions*/
-  app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-      $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
- 
-}]);
-
-
-app.controller('appctr', ['$scope', '$mdDialog', function($scope, $mdDialog,$location){
-  var alert;
-  $scope.showDialog = showDialog;
-  $scope.items = [1,2,3];
-  
-  function showDialog($event) {
-    var parentEl = angular.element(document.querySelector('md-content'));
-    alert = $mdDialog.alert({
-      parent: parentEl,
-      targetEvent: $event,
-      template:
-        '<md-dialog style="width: 51%;height:40%" aria-label="Sample Dialog">' +
-        
-
-        '  <md-content>'+
-
-        '    <form id="loginform" style="background-color: rgb(219, 128, 25);">  '+
-              
-        '<md-input-container>' +
-         '   <label>Username or Email</label>'+
-         ' <input style="width:200%" required name="clientName" ng-model="username">'+
-           ' <div ng-messages="projectForm.clientName.$error">'+
-            '<div ng-message="required">This is required.</div>'+
-           ' </div>'+
-        '</md-input-container>'+
-
-         '<md-input-container>' +
-         '   <label>Password</label>'+
-         ' <input  style="width:200%" type="password" required name="clientName" ng-model="passwd">'+
-           ' <div ng-messages="projectForm.clientName.$error">'+
-            '<div ng-message="required">This is required.</div>'+
-           ' </div>'+
-        '</md-input-container>'+
-
-        '  </md-content>' +
-        '  <div class="md-actions">' +
-        '    <md-button ng-click="ctrl.closeDialog()">' +
-        '      Login' +
-        '    </md-button>' +
-        '  </div>' +
-        '</form>'+
-        '</md-dialog>',
-        locals: {
-          items: $scope.items,
-          closeDialog: $scope.closeDialog
-        },
-        bindToController: true,
-        controllerAs: 'ctrl',
-        controller: 'DialogController'
-    });
-    
-    $mdDialog
-      .show( alert )
-      .finally(function() {
-        alert = undefined;
-      });
-  }
-  $scope.closeDialog = function() {
-    var username = $scope.username;
-    var password = $scope.passwd;
-    $mdDialog.hide();
-
-  };
-}])
-.controller('DialogController', function($scope, $mdDialog) {
-  //alert( this.closeDialog );
-  //this.closeDialog = $scope.closeDialog;
-  
-    /*$scope.closeDialog = function() {
-      $mdDialog.hide();
-    };*/
-});
-
-
-
 
 
     </script>
-
   </body>
 </html>
