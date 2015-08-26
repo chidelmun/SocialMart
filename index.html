@@ -3,31 +3,230 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <meta name="viewport" content="initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+    input{
+        width: 250%;
+    }
+    h1{
+      margin-left: 39%;
+    }
+    </style>
   </head>
+  <title>Find meals close to you</title>
   <body layout="column" ng-controller="AppCtrl">
-    <md-toolbar layout="row">
+    <md-toolbar id="tb" layout="row">
       <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
           <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
         </md-button>
-        <h1>Hello World</h1>
-      </div>
-    </md-toolbar>
-    <div layout="row" flex>
+        <a href="/">
+        <h1 id="nam">SocialMart</h1>
+        </a>
+
+      </div><br>
+       <div ng-controller="appctr">
+    <section id="srch" layout="row" layout-sm="column" layout-align="center center">
+      <md-button class="md-raised md-primary"  ng-click="showDialog($event)"> Login</md-button>
+    </section>
+    </div>
+  </md-toolbar>
+
+
+  <div ng-controller="AppCtrl as appCtrl"  style= "background-image: url('http://www.thelalit.com/d/the-lalit-new-delhi/media/TheLalitNewDelhi/FoodBeverage_Restaurants/24_7Restaurant/24-7RestaurantDelhi.jpg');" >
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="2:2"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+
+
+        <div layout="row" flex>
         <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-          
         </md-sidenav>
+
         <div layout="column" flex id="content">
             <md-content layout="column" flex class="md-padding">
-            
-            </md-content>
-        </div>
+
+            <p style="  color: rgb(232, 148, 17);">Add New Restaurant</p>
+     <form id="addrestau">
+              
+        <md-input-container>
+            <label>Restaurant Name</label>
+            <input required name="clientName" ng-model="project.clientName">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+      <md-input-container>
+            <label>City</label>
+            <input required name="clientName" ng-model="project.clientCity">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <md-input-container>
+            <label>Address</label>
+            <input required name="clientName" ng-model="project.clientAddress">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <md-input-container>
+            <label>Phone Number</label>
+            <input required name="clientName" ng-model="project.clientPhone">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <md-input-container>
+            <label>Email</label>
+            <input required name="clientName" ng-model="project.clientEmail">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <md-input-container>
+            <label>Create Password</label>
+            <input type="password" required name="clientName" ng-model="project.clientPasswd">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <md-input-container>
+            <label>Confirm Password</label>
+            <input type="password" required name="clientName" ng-model="project.clientPasswd2">
+            <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+            </div>
+      </md-input-container>
+
+      <section id="srch" layout="row" layout-sm="column" layout-align="center center">
+      <md-button class="md-raised md-primary"> Add Restaurant</md-button>
+    </section>
+
+  </form>
+
+
+
+        </md-content>
     </div>
+
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+
+        </md-sidenav>
+
+    </div>
+
+
     <!-- Angular Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('StarterApp', ['ngMaterial']);
+
+    app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+      $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+ 
+}]);
+
+  /*Login controller functions*/
+  app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+      $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+ 
+}]);
+
+
+app.controller('appctr', ['$scope', '$mdDialog', function($scope, $mdDialog,$location){
+  var alert;
+  $scope.showDialog = showDialog;
+  $scope.items = [1,2,3];
+  
+  function showDialog($event) {
+    var parentEl = angular.element(document.querySelector('md-content'));
+    alert = $mdDialog.alert({
+      parent: parentEl,
+      targetEvent: $event,
+      template:
+        '<md-dialog style="width: 51%;height:40%" aria-label="Sample Dialog">' +
+        
+
+        '  <md-content>'+
+
+        '    <form id="loginform" style="background-color: rgb(219, 128, 25);">  '+
+              
+        '<md-input-container>' +
+         '   <label>Username or Email</label>'+
+         ' <input style="width:200%" required name="clientName" ng-model="username">'+
+           ' <div ng-messages="projectForm.clientName.$error">'+
+            '<div ng-message="required">This is required.</div>'+
+           ' </div>'+
+        '</md-input-container>'+
+
+         '<md-input-container>' +
+         '   <label>Password</label>'+
+         ' <input  style="width:200%" type="password" required name="clientName" ng-model="passwd">'+
+           ' <div ng-messages="projectForm.clientName.$error">'+
+            '<div ng-message="required">This is required.</div>'+
+           ' </div>'+
+        '</md-input-container>'+
+
+        '  </md-content>' +
+        '  <div class="md-actions">' +
+        '    <md-button ng-click="ctrl.closeDialog()">' +
+        '      Login' +
+        '    </md-button>' +
+        '  </div>' +
+        '</form>'+
+        '</md-dialog>',
+        locals: {
+          items: $scope.items,
+          closeDialog: $scope.closeDialog
+        },
+        bindToController: true,
+        controllerAs: 'ctrl',
+        controller: 'DialogController'
+    });
+    
+    $mdDialog
+      .show( alert )
+      .finally(function() {
+        alert = undefined;
+      });
+  }
+  $scope.closeDialog = function() {
+    var username = $scope.username;
+    var password = $scope.passwd;
+    $mdDialog.hide();
+
+  };
+}])
+.controller('DialogController', function($scope, $mdDialog) {
+  //alert( this.closeDialog );
+  //this.closeDialog = $scope.closeDialog;
+  
+    /*$scope.closeDialog = function() {
+      $mdDialog.hide();
+    };*/
+});
+
+
+
+
+
+    </script>
+
   </body>
 </html>
