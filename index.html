@@ -3,41 +3,94 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <meta name="viewport" content="initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
     input{
-        width: 250%;
+        width: 78%;
     }
     h1{
       margin-left: 39%;
     }
+    #tb{
+      background-color: #009688;
+    }
     </style>
+    <title>Settings Page</title>
   </head>
-  <title>Settings Page</title>
-  <body layout="column" ng-controller="AppCtrl">
+  
+<body layout="column" ng-controller="AppCtrl">
     <md-toolbar id="tb" layout="row">
       <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
           <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
-        </md-button>
-        <a href="/">
-        <h1 id="nam">SocialMart</h1>
-        </a>
-
+          </md-button>
+          <a href="/">
+          <h1 id="nam">SocialMart</h1>
+          </a>
       </div><br>
-   
-  </md-toolbar>
+    </md-toolbar>
 
 <div layout="row">
-  <div flex>
-    [flex]
-  </div>
-  <div flex>
-    [flex]
-  </div>
-  <div flex hide-sm>
-    [flex]
-  </div>
+      <div flex="20" style="background-color:#009688;height:100%">
+        <p>Ads</p>
+      </div>
+
+      <div flex="60">
+          <md-input-container>
+              <label>Your Name</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+          <md-input-container>
+              <label>Email</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+
+          <md-input-container>
+              <label>Location</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+
+          <md-input-container>
+              <label>Language</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+
+          <md-input-container>
+              <label>Phone</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+          <md-input-container>
+              <label>Others</label>
+              <input required name="clientName" ng-model="project.clientName">
+              <div ng-messages="projectForm.clientName.$error">
+                  <div ng-message="required"></div>
+              </div>
+          </md-input-container>
+
+      </div>
+
+      <div flex="20" style="background-color:#009688;;height:100%">
+        
+      </div>
 </div>
 
     <!-- Angular Material Dependencies -->
